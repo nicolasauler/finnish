@@ -21,7 +21,7 @@ plotly = { git = "https://github.com/nicolasauler/plotly.git" }
 rand = "0.8.5"
 regex = "1.10.2"
 reqwest = { version = "0.11.24", features = ["json"] }
-serde = { version = "1.0.196", features = ["derive"] }
+serde = { version = "1.0.197", features = ["derive"] }
 serde_json = "1.0.113"
 shuttle-axum = "0.38.0"
 shuttle-runtime = { version = "0.38.0", default-features = false, features = ["colored"] }
