@@ -40,5 +40,5 @@ tower_governor = { version = "0.3.1", features = ["axum", "tracing"] }
 tracing = "0.1.40"
 tracing-subscriber = "0.3.18"
 uuid = { version = "1.7.0", features = ["v4", "fast-rng", "macro-diagnostics"] }
-validator = { version = "0.16.1", features = ["derive"] }
+validator = { version = "0.17.0", features = ["derive"] }
 zxcvbn = "2.2.2"
