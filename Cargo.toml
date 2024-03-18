@@ -24,7 +24,7 @@ reqwest = { version = "0.11.24", features = ["json"] }
 serde = { version = "1.0.196", features = ["derive"] }
 serde_json = "1.0.113"
 shuttle-axum = "0.38.0"
-shuttle-runtime = { version = "0.38.0", default-features = false, features = ["colored"] }
+shuttle-runtime = { version = "0.42.0", default-features = false, features = ["colored"] }
 shuttle-secrets = "0.38.0"
 shuttle-shared-db = { version = "0.38.0", features = ["postgres", "sqlx"] }
 sqlx = { version = "0.7.3", features = ["runtime-tokio-rustls", "postgres", "chrono", "uuid"] }
