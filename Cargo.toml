@@ -12,7 +12,7 @@ askama = { version = "0.12.1", features = ["with-axum", "serde-json"] }
 askama_axum = "0.4.0"
 axum = "0.7.5"
 axum-helmet = "0.1.0"
-axum-login = "0.15.1"
+axum-login = "0.15.3"
 chrono = { version = "0.4.38", features = ["serde"] }
 lettre = "0.11.7"
 once_cell = "1.19.0"
