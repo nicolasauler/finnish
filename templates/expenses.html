@@ -7,12 +7,21 @@
 {% block head %}
 <script nonce="{{ nonce }}" src="/js/hyperscript.min.js"></script>
 <script nonce="{{ nonce }}" src="/js/plotly-strict-2.28.0.min.js" charset="utf-8"></script>
+<script nonce="{{ nonce }}" src="/js/pluggy-connect.js"></script>
 {% endblock %}
 
 {% block content %}
 
 <section class="section" id="expenses">
 <h3>{{ username }}'s Expenses</h3>
+
+<button hx-get="/expenses/pluggy-widget"
+        hx-trigger="click"
+        class="contrast"
+        type="button"
+>
+    Sync with Pluggy
+</button>
 
 <form hx-get="/expenses" hx-target="#expenses-table-body" hx-trigger="load, refresh-table from:body, change from:#month">
     <div class="grid">
@@ -56,7 +65,15 @@
 
 <div id="expenses-plots">
 </div>
+
 </section>
+
+<div hx-get="/expenses/plots"
+     hx-target="#expenses-plots"
+     hx-trigger="load, change from:#month, refresh-table from:body, refresh-plots from:body"
+     hx-include="#month"
+>
+</div>
 
 <div id="add-expense-modal" _="on toggleModal toggle @open on #modal-example">
     <dialog id="modal-example">

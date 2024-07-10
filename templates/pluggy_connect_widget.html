@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    const pluggyConnect = new PluggyConnect({
+        connectToken: "{{ access_token }}",
+        includeSandbox: true,
+        theme: 'dark',
+        onSuccess: (itemData) => {
+          // TODO: Implement logic for successful connection
+          // The following line is an example, it should be removed when implemented.
+          console.log('Yay! Pluggy connect success!', itemData)
+        },
+        onError: (error) => {
+          // TODO: Implement logic for error on connection
+          // The following line is an example, it should be removed when implemented.
+          console.error('Whoops! Pluggy Connect error... ', error)
+        },
+    })
+    pluggyConnect.init()
+</script>

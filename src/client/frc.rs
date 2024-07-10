@@ -89,11 +89,11 @@ pub fn validate_frc(frc_captcha_solution: &str) -> bool {
     return true;
 }
 
-// POST request to https://api.friendlycaptcha.com/api/v1/siteverify
-// with the following parameters in the body:
-// - solution: the frc_captcha_solution
-// - sitekey: the sitekey
-// - secret: the secret (api key)
+/// POST request to <https://api.friendlycaptcha.com/api/v1/siteverify>
+/// with the following parameters in the body:
+/// - solution: the ``frc_captcha_solution``
+/// - sitekey: the sitekey
+/// - secret: the secret (api key)
 pub async fn verify_frc_solution(
     frc_captcha_solution: &str,
     secret_store: &SecretStore,

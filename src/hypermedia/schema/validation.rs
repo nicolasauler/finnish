@@ -1,10 +1,15 @@
-use once_cell::sync::Lazy;
+use std::sync::OnceLock;
+
 use regex::Regex;
 use serde::Deserialize;
 use validator::{Validate, ValidationError};
 use zxcvbn::{zxcvbn, Score};
 
-static RE_USERNAME: Lazy<Regex> = Lazy::new(|| Regex::new(r"^[a-z0-9]{3,20}$").unwrap());
+pub fn username_regex() -> &'static Regex {
+    static RE_USERNAME: OnceLock<Regex> = OnceLock::new();
+    RE_USERNAME
+        .get_or_init(|| Regex::new(r"^[a-z0-9]{3,20}$").expect("Could not compile username regex"))
+}
 
 #[derive(Deserialize, Validate, Debug)]
 pub struct EmailInput {
@@ -14,7 +19,7 @@ pub struct EmailInput {
 
 #[derive(Deserialize, Validate)]
 pub struct UsernameInput {
-    #[validate(regex(path = *RE_USERNAME))]
+    #[validate(regex(path = *username_regex()))]
     pub username: String,
 }
 
@@ -41,7 +46,7 @@ pub struct PasswordsInput {
 
 #[derive(Deserialize, Validate)]
 pub struct SignUpInput {
-    #[validate(regex(path = *RE_USERNAME))]
+    #[validate(regex(path = *username_regex()))]
     pub username: String,
     #[validate(email)]
     pub email: String,

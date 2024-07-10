@@ -7,3 +7,5 @@ pub mod expenses;
 /// Module that performs input validation.
 /// This module is public.
 pub mod validation;
+
+pub mod pluggy;

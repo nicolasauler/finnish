@@ -1,7 +1,9 @@
 /target
 .shuttle-storage
 Secrets*.toml
+*.env
 .env
+test.env
 .cargo/config.toml
 
 # ignore virtualenv

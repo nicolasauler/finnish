@@ -8,40 +8,60 @@ keywords = ["finance", "personal finance", "budget", "money", "expenses", "incom
 categories = ["finance"]
 
 [dependencies]
-askama = { version = "0.12.1", features = ["with-axum", "serde-json"] }
-askama_axum = "0.4.0"
-axum = "0.7.5"
-axum-helmet = "0.1.0"
-axum-login = "0.15.3"
-chrono = { version = "0.4.38", features = ["serde"] }
-lettre = "0.11.7"
-once_cell = "1.19.0"
-password-auth = "1.1.0-pre.0"
+anyhow = { version = "1.0.86", default-features = false }
+askama = { version = "0.12.1", default-features = false, features = ["with-axum", "serde-json"] }
+askama_axum = { version = "0.4.0", default-features = false }
+axum = { version = "0.7.5", default-features = false }
+axum-helmet = { version = "0.1.0", default-features = false }
+axum-login = { version = "0.15.3", default-features = false }
+chrono = { version = "0.4.38", default-features = false, features = ["serde"] }
+dotenvy = { version = "0.15.7", default-features = false }
+lettre = { version = "0.11.7", default-features = false, features = ["smtp-transport", "native-tls", "builder"] }
+password-auth = { version = "1.1.0-pre.0", default-features = false, features = ["argon2"] }
 plotly = { git = "https://github.com/nicolasauler/plotly.git" }
-rand = "0.8.5"
-regex = "1.10.5"
-reqwest = { version = "0.12.5", features = ["json"] }
-serde = { version = "1.0.204", features = ["derive"] }
-serde_json = "1.0.120"
-shuttle-axum = "0.46.0"
+rand = { version = "0.8.5", default-features = false }
+regex = { version = "1.10.5", default-features = false }
+reqwest = { version = "0.12.5", default-features = false, features = ["json", "default-tls"] }
+serde = { version = "1.0.204", default-features = false, features = ["derive", "serde_derive"] }
+serde_json = { version = "1.0.120", default-features = false }
+shuttle-axum = { version = "0.46.0", default-features = false, features = ["axum"] }
+shuttle-common = { version = "0.46.0", default-features = false }
 shuttle-runtime = { version = "0.46.0", default-features = false, features = ["colored"] }
-shuttle-shared-db = { version = "0.46.0", features = ["postgres", "sqlx"] }
-sqlx = { version = "0.7.4", features = ["runtime-tokio-rustls", "postgres", "chrono", "uuid"] }
-strum = { version = "0.26.3", features = ["strum_macros", "derive"] }
-time = "0.3.36"
-tokio = { version = "1.38.0", features = ["full"] }
-totp-rs = { version = "5.5.1", features = ["qr"] }
-tower = "0.4.13"
-tower-http = { version = "0.5.2", features = ["fs", "trace"] }
-tower-sessions = "0.12.2"
-tower-sessions-sqlx-store = { version = "0.12.0", features = ["postgres"] }
-tower_governor = { version = "0.4.2", features = ["axum", "tracing"] }
-tracing = "0.1.40"
-tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
-uuid = { version = "1.9.1", features = ["v4", "fast-rng", "macro-diagnostics"] }
-validator = { version = "0.18.1", features = ["derive"] }
-zxcvbn = "3.0.1"
+shuttle-shared-db = { version = "0.46.0", default-features = false, features = ["postgres", "sqlx"] }
+sqlx = { version = "0.7.4", default-features = false, features = ["runtime-tokio-rustls", "postgres", "chrono", "uuid"] }
+strum = { version = "0.26.3", default-features = false, features = ["strum_macros", "derive"] }
+time = { version = "0.3.36", default-features = false }
+tokio = { version = "1.38.0", default-features = false, features = ["full"] }
+totp-rs = { version = "5.5.1", default-features = false, features = ["qr"] }
+tower = { version = "0.4.13", default-features = false }
+tower-http = { version = "0.5.2", default-features = false, features = ["fs", "trace"] }
+tower-sessions = { version = "0.12.2", default-features = false }
+tower-sessions-sqlx-store = { version = "0.12.0", default-features = false, features = ["postgres"] }
+tower_governor = { version = "0.4.2", default-features = false, features = ["axum", "tracing"] }
+tracing = { version = "0.1.40", default-features = false }
+tracing-subscriber = { version = "0.3.18", default-features = false, features = ["env-filter", "fmt", "ansi"] }
+uuid = { version = "1.9.1", default-features = false, features = ["v4", "fast-rng", "macro-diagnostics"] }
+validator = { version = "0.18.1", default-features = false, features = ["derive"] }
+zxcvbn = { version = "3.0.1", default-features = false }
 
 [profile.dev]
 debug = 0
 strip = "debuginfo"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = 0 }
+# unwrap_used = { level = "warn", priority = 1 }
+
+# allow_attributes_without_reason = { level = "warn", priority = 4 } # nightly
+as_underscore = { level = "warn", priority = 4 }
+panic_in_result_fn = { level = "warn", priority = 4 }
+
+needless_return = { level = "allow", priority = 6 }
+module_name_repetitions = { level = "allow", priority = 6 }
+
+[lints.rust]
+unsafe_code = { level = "forbid", priority = 3 }
+nonstandard_style = { level = "warn", priority = 2 }
+future_incompatible = { level = "warn", priority = 1 }
+missing_debug_implementations = { level = "warn", priority = 0 }

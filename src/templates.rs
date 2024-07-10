@@ -341,3 +341,9 @@ pub struct ExpenseRowTemplate {
     /// The uuid of the expense.
     pub uuid: Uuid,
 }
+
+#[derive(Template, Default)]
+#[template(path = "pluggy_connect_widget.html")]
+pub struct PluggyConnectWidgetTemplate {
+    pub access_token: String,
+}

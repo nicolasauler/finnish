@@ -38,6 +38,11 @@ jobs:
           name: Install nextest
           command: curl -LsSf https://get.nexte.st/latest/linux | tar zxf - -C ${CARGO_HOME:-~/.cargo}/bin
       - run:
+          name: Setup test.env
+          command: |
+            echo PLUGGY_CLIENT_ID=$PLUGGY_CLIENT_ID > test.env
+            echo PLUGGY_CLIENT_SECRET=$PLUGGY_CLIENT_SECRET >> test.env
+      - run:
           name: Build and archive tests
           command: cargo nextest archive --workspace --archive-file nextest-archive.tar.zst
       - run:
@@ -147,6 +152,11 @@ jobs:
       - run:
           name: Install nextest
           command: curl -LsSf https://get.nexte.st/latest/linux | tar zxf - -C ${CARGO_HOME:-~/.cargo}/bin
+      - run:
+          name: Setup test.env
+          command: |
+            echo PLUGGY_CLIENT_ID=$PLUGGY_CLIENT_ID > test.env
+            echo PLUGGY_CLIENT_SECRET=$PLUGGY_CLIENT_SECRET >> test.env
       - run:
           name: Running code coverage
           command: rustup run nightly cargo llvm-cov nextest --locked --all-features --lcov --output-path lcov.info
