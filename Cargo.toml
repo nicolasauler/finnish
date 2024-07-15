@@ -38,7 +38,7 @@ tower-sessions-sqlx-store = { version = "0.12.0", features = ["postgres"] }
 tower_governor = { version = "0.4.2", features = ["axum", "tracing"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
-uuid = { version = "1.9.1", features = ["v4", "fast-rng", "macro-diagnostics"] }
+uuid = { version = "1.10.0", features = ["v4", "fast-rng", "macro-diagnostics"] }
 validator = { version = "0.18.1", features = ["derive"] }
 zxcvbn = "3.0.1"
 
